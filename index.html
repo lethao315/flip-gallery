@@ -1,114 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Image Flip Gallery</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="gallery-container">
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image1.jpg" alt="Artwork 1">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 1</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image2.jpg" alt="Artwork 2">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 2</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image3.jpg" alt="Artwork 3">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 3</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image4.jpg" alt="Artwork 4">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 4</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image5.jpg" alt="Artwork 5">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 5</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image6.jpg" alt="Artwork 6">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 6</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image7.jpg" alt="Artwork 7">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 7</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image8.jpg" alt="Artwork 8">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 8</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image9.jpg" alt="Artwork 9">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 9</p>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="image10.jpg" alt="Artwork 10">
-                </div>
-                <div class="card-back">
-                    <p>Information about Artwork 10</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap'); /* Font Google Fonts */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.card {
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-weight: 500;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.card-back {
+    background-color: #333;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+}
